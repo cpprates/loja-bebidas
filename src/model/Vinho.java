@@ -2,11 +2,29 @@ package model;
 
 public class Vinho extends Bebida {
     private String uva, barril;
+    private double alcool;
 
-    public Vinho(String nome, String estilo, String uva, String barril) {
+    public Vinho(String nome, String estilo, String uva, String barril, double alcool) {
         super(nome, estilo);
         this.uva = uva;
         this.barril = barril;
+        this.alcool = alcool;
+    }
+
+    public String getBarril() {
+        return barril;
+    }
+
+    public void setBarril(String barril) {
+        this.barril = barril;
+    }
+
+    public double getAlcool() {
+        return alcool;
+    }
+
+    public void setAlcool(double alcool) {
+        this.alcool = alcool;
     }
 
     @Override
@@ -48,7 +66,7 @@ public class Vinho extends Bebida {
 
     @Override
     public String toString() {
-        return "[🍷Vinho: " + getNome() + "\nEstilo: " + getEstilo() + "\nUva: " + uva + "\n Barril: " + barril + "]";
+        return "🍷 * " + super.toString() + " * " + uva + " * " + barril + " * " + alcool;
     }
 
 }

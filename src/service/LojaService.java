@@ -19,8 +19,8 @@ public class LojaService {
         return lojaDAO.remover(nome);
     }
 
-    public boolean atualizar(String nome, String informacao) throws Exception {
-        return lojaDAO.atualizar(nome, informacao);
+    public boolean atualizar(String nome, String informacao, int opcao) throws Exception {
+        return lojaDAO.atualizar(nome, informacao, opcao);
     }
 
     public String buscarTodos() throws Exception {

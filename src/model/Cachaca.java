@@ -2,11 +2,21 @@ package model;
 
 public class Cachaca extends Bebida {
     private String cana, barril;
+    private double alcool;
 
-    public Cachaca(String nome, String estilo, String cana, String barril) {
+    public Cachaca(String nome, String estilo, String cana, String barril, double alcool) {
         super(nome, estilo);
         this.cana = cana;
         this.barril = barril;
+        this.alcool = alcool;
+    }
+
+    public double getAlcool() {
+        return alcool;
+    }
+
+    public void setAlcool(double alcool) {
+        this.alcool = alcool;
     }
 
     public String getBarril() {
@@ -55,8 +65,7 @@ public class Cachaca extends Bebida {
 
     @Override
     public String toString() {
-        return "[🍸Cachaca: " + getNome() + "\nEstilo: " + getEstilo() + "\nCana: " + cana + "\nBarril: " + barril
-                + "]";
+        return "🍸 * " + super.toString() + " * " + cana + " * " + barril + " * " + alcool;
     }
 
 }

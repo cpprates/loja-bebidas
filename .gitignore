@@ -1,1 +1,4 @@
 *.class
+*.idea/
+loja-bebidas.iml
+out/*

@@ -24,6 +24,11 @@ public abstract class Bebida {
         return nome;
     }
 
+    @Override
+    public String toString() {
+        return nome + " * " + estilo;
+    }
+
     public abstract String material();
 
     public abstract String fabricacao();

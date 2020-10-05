@@ -1,0 +1,37 @@
+🍺 * Rasen Bier * Red Ale * 37.0 * Ambar Escura * 9.0
+🍸 * Webber Haus * Branca * Do Norte * Umburana * 48.0
+🍷 * Garibaldi Malbec * Tinto * Malbec * Carvalho * 13.0
+🍷 * Garibaldi * Tinto * Malbec * Carvalho * 13.0
+🍷 * Salton * Tinto * Cabertnet Sauvingon * Carvalho * 13.0
+🍷 * vin * tinto * merlot * carvalho * 13.1
+🍷 * vinho * tinto * merlot *  * 13.0
+🍷 * salton * tinto * merlot * carvalho * 13.0
+🍷 * Salton Merlot * Tinto * Merlot * Carvalho * 13.0
+🍸 * Umburana * Clara * Do Nordeste * Umburana * 48.0
+🍸 * Webber Haus * Clara * Nordeste * Umburana * 48.0
+🍸 * Webber Haus * Umburana * Nordeste * Umburana * 48.0
+🍺 * EisenBahn * APA * 46.0 * Ambar escuro * 8.0
+🍺 * Adoma * Berga * 35.0 * Clara frutada * 7.0
+🍺 * Bossta Bier * Bocker * 57.0 * Escura * 12.0
+🍺 * Dado * Red Ale * 36.0 * Ambar * 13.0
+🍺 * Bossta Bier * IPA * 69.0 * Turva laranja * 9.0
+🍺 * DaDo Biwer * Pilsen * 23.0 * Clara * 5.0
+🍺 * Ceva Boa * ambar ale * 35.0 * ambar * 9.0
+🍺 * Da Boa * Pilsner * 24.0 * Clara * 5.0
+🍸 * Cahcaça 51 * Branca * Nordeste * Carvalho * 38.0
+🍸 * Velho Barrero * Clara * Norte * Carvalho * 39.0
+🍺 * skol * beats * 10.0 * roxa * 16.0
+🍺 * Gata Bier * Bock * 45.0 * Escura café * 11.0
+🍷 * Vino di Gati * Tinto * Malbec * Carvalho * 12.0
+🍸 * Webber Haus * 7 Madeiras * Nordeste * Umburana, Carvalho, Eucalipto * 39.0
+🍺 * Ceva Bier * Pilsen * 34.0 * Clara  * 6.0
+🍺 * Gata Bier * Bock * 46.0 * Preta * 14.0
+🍷 * Vino da Nona * Suave * Merlot * Carvalho * 14.0
+🍺 * Ceva da Gata * Bock * 56.0 * Escura * 13.0
+🍷 * Vino Bianco * Branco * Verde * Carvalho * 15.0
+🍺 * Ceva da Ka * Ambar Alw * 37.0 * Ambar clara * 8.0
+🍺 * EisenBahn * Pale Ale * 67.0 * Laranja Truva * 10.0
+🍺 * noma * bock * 34.0 * red * 13.0
+🍺 * Bira da Gata * Café * 56.0 * Preta * 16.0
+🍺 * nome da ceva * pilsen * 23.0 * rosa * 23.0
+🍺 * da boua * pilsen * 23.0 * calra * 5.0
