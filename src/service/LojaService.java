@@ -2,6 +2,11 @@ package service;
 
 import dao.LojaDAO;
 import model.Bebida;
+import model.Cachaca;
+import model.Cerveja;
+import model.Vinho;
+
+import java.io.IOException;
 
 public class LojaService {
 
@@ -25,6 +30,45 @@ public class LojaService {
 
     public String buscarTodos() throws Exception {
         return lojaDAO.buscarTodos();
+    }
+
+    public String buscarCervejas() {
+        String retorno = "";
+        try {
+            for (Cerveja c : lojaDAO.criarArrayCerveja()) {
+                if (c != null)
+                    retorno += "\n" + c.toString();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return retorno;
+    }
+
+    public String buscarCachacas() {
+        String retorno = "";
+        try {
+            for (Cachaca c : lojaDAO.criarArrayCachaca()) {
+                if (c != null)
+                    retorno += "\n" + c.toString();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return retorno;
+    }
+
+    public String buscarVinhos() {
+        String retorno = "";
+        try {
+            for (Vinho v : lojaDAO.criarArrayVinho()) {
+                if (v != null)
+                    retorno += "\n" + v.toString();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return retorno;
     }
 
 }

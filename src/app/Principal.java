@@ -6,170 +6,177 @@ import model.Cerveja;
 import model.Vinho;
 import service.LojaService;
 
-import java.util.Scanner;
-
 public class Principal {
     public static void main(String[] args) {
         LojaDAO lojaDAO = new LojaDAO();
         LojaService lojaService = new LojaService(lojaDAO);
-        Scanner scanner = new Scanner(System.in);
 
         apresentacao();
-        int opcao = 0;
-        while (opcao < 1 || opcao > 5) {
+        int opcao;
+
+        do {
             System.out.println("O que deseja fazer?");
-            opcao = Integer.parseInt(scanner.nextLine());
-        }
+            System.out.println("1)\uD83C\uDD95Cadastrar\n2)\uD83D\uDEABRemover\n3)\uD83D\uDCD1Listar\n4)\uD83C\uDFAFModificar\n5)\uD83C\uDF7AListar Cervejas\n6)\uD83C\uDF77Vinho\n7)\uD83C\uDF78Cachaça\n0)\uD83D\uDEAASair");
+            opcao = Teclado.leInt();
 
-        while (opcao != 5) {
-
-            if (opcao == 1) { // Cadastrar
-                int op = 0;
-                while (op < 1 || op > 3) {
+            switch (opcao) {
+                case 1: // Cadastrar
                     imprimeOpcoes();
-                    op = Integer.parseInt(scanner.nextLine());
-                }
-                switch (op) {
-                    case 1:
-                        try {
-                            if (cadastrarCerveja(lojaService)) {
+                    int op = Teclado.leInt();
+
+                    switch (op) {
+                        case 1:
+                            if (cadastrarCerveja(lojaService))
                                 System.out.println("Cerveja cadastrada com sucesso");
-                                break;
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                            else
+                                System.out.println("Não foi possível cadastrar bebida");
                             break;
-                        }
-                    case 2:
-                        try {
-                            if (cadastrarVinho(lojaService)) {
+                        case 2:
+                            if (cadastrarVinho(lojaService))
                                 System.out.println("Vinho cadastrado com sucesso");
-                                break;
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    case 3:
-                        try {
-                            if (cadastrarCachaca(lojaService)) {
+                            else
+                                System.out.println("Não foi possível cadastrar bebida");
+                            break;
+                        case 3:
+                            if (cadastrarCachaca(lojaService))
                                 System.out.println("Cachaça cadastrada com sucesso");
-                                break;
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    default:
-                        break;
-                }
-
-            }
-
-            if (opcao == 2) { // Remover
-                System.out.println("Digite o nome do produto:");
-                String nome = scanner.nextLine();
-                try {
-                    if (lojaService.remover(nome))
-                        System.out.println(nome + " removido com sucesso");
-                    else
-                        System.out.println("Erro! Produto não encontrado");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            if (opcao == 3) { // Listar
-                try {
-                    System.out.println(lojaService.buscarTodos());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            if (opcao == 4) { // Modificar
-                String nome = scanner.nextLine();
-                String informacao = scanner.nextLine();
-                imprimeOpcoesDeAtualizacao();
-                int elemento = scanner.nextInt();
-                try {
-                    if (lojaService.atualizar(nome, informacao, elemento)) {
-                        System.out.println(nome + " atualizado com sucesso");
-                        break;
+                            else
+                                System.out.println("Não foi possível cadastrar bebida");
+                            break;
                     }
-                    System.out.println("Erro! Não foi possível atualizar Bebida");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
+                    break;
+                case 2: // Remover
+                    System.out.println("Digite o estilo do produto:");
+                    String nome = Teclado.leString();
+                    try {
+                        if (lojaService.remover(nome))
+                            System.out.println(nome + " removido com sucesso");
+                        else
+                            System.out.println("Erro! Produto não encontrado");
+                        break;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 3: // Listar
+                    try {
+                        System.out.println(lojaService.buscarTodos());
+                        break;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 4: // Modificar
+                    String nome1 = Teclado.leString("Digite o nome da bebida:");
+                    String informacao = Teclado.leString("Atualizar para:");
+                    imprimeOpcoesDeAtualizacao();
+                    int elemento = Teclado.leInt();
+                    try {
+                        if (lojaService.atualizar(nome1, informacao, elemento))
+                            System.out.println(nome1 + " atualizado com sucesso");
+                        else
+                            System.out.println("Erro! Não foi possível atualizar Bebida");
+                        break;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
 
-            System.out.println("\n1)\uD83C\uDD95Cadastrar\n2)\uD83D\uDEABRemover\n3)\uD83D\uDCD1Listar\n4)\uD83C\uDFAFModificar\n5)\uD83D\uDEAASair");
-            opcao = scanner.nextInt();
-            while (opcao < 1 || opcao > 5) {
-                opcao = Integer.parseInt(scanner.nextLine());
+                case 5: // Listar Cervejas
+                    imprimirCervejas(lojaService);
+                    break;
+                case 6: // Listar Vinhos
+                    imprimirVinho(lojaService);
+                    break;
+                case 7: // Listar Cachaças
+                    imprimirCachacas(lojaService);
+                    break;
             }
         }
-        scanner.close();
+
+        while (opcao != 0);
         System.out.println("Saindo...\uD83D\uDE80\nMuito obrigada por usar o sistema\uD83D\uDC4B");
     }
 
+    public static void imprimirCervejas(LojaService lojaService) {
+        System.out.println(lojaService.buscarCervejas());
+    }
+
+    public static void imprimirCachacas(LojaService lojaService) {
+        System.out.println(lojaService.buscarCachacas());
+    }
+
+    public static void imprimirVinho(LojaService lojaService) {
+        System.out.println(lojaService.buscarVinhos());
+    }
+
+
     public static void apresentacao() {
         System.out.println("****Bem-vinda a Loja de Bebidas****");
-        System.out.println("Aqui tu pode manipular 3 tipos de bebidas: 1)\uD83C\uDF7A Cerveja | 2)🍷 Vinho | 3)\uD83C\uDF78 Cachaça");
-        System.out.println("É possível\n1)\uD83C\uDD95Cadastrar\n2)\uD83D\uDEABRemover\n3)\uD83D\uDCD1Listar\n4)\uD83C\uDFAFModificar\n5)\uD83D\uDEAASair");
-//        System.out.println("O que deseja fazer?");
+        System.out.println("Aqui tu pode manipular 3 tipos de bebidas: \uD83C\uDF7A Cerveja | 🍷 Vinho | \uD83C\uDF78 Cachaça");
     }
 
-    public static boolean cadastrarCerveja(LojaService lojaService) throws Exception {
-        Scanner sc = new Scanner(System.in);
+    public static boolean cadastrarCerveja(LojaService lojaService) {
         System.out.println("Nome da cerveja:");
-        String nome = sc.nextLine();
+        String nome = Teclado.leString();
         System.out.println("Estilo:");
-        String estilo = sc.nextLine();
+        String estilo = Teclado.leString();
         System.out.println("Amargor (IBU)");
-        double ibu = Double.parseDouble(sc.nextLine());
+        double ibu = Teclado.leDouble();
         System.out.println("Cor da cerveja:");
-        String cor = sc.nextLine();
+        String cor = Teclado.leString();
         System.out.println("Álcool (%):");
-        double alcool = Double.parseDouble(sc.nextLine());
-        sc.close();
+        double alcool = Teclado.leDouble();
 
         Cerveja cerveja = new Cerveja(nome, estilo, ibu, cor, alcool);
-        return lojaService.cadastrar(cerveja);
+        try {
+            return lojaService.cadastrar(cerveja);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
-    public static boolean cadastrarVinho(LojaService lojaService) throws Exception {
-        Scanner sc = new Scanner(System.in);
+    public static boolean cadastrarVinho(LojaService lojaService) {
         System.out.println("Nome do vinho:");
-        String nome = sc.nextLine();
+        String nome = Teclado.leString();
         System.out.println("Estilo:");
-        String estilo = sc.nextLine();
+        String estilo = Teclado.leString();
         System.out.println("Tipo de uva do vinho:");
-        String uva = sc.nextLine();
+        String uva = Teclado.leString();
         System.out.println("Tipo de barril do vinho:");
-        String barril = sc.nextLine();
+        String barril = Teclado.leString();
         System.out.println("Álcool (%):");
-        double alcool = Double.parseDouble(sc.nextLine());
-        sc.close();
+        double alcool = Teclado.leDouble();
 
         Vinho vinho = new Vinho(nome, estilo, uva, barril, alcool);
-        return lojaService.cadastrar(vinho);
+        try {
+            return lojaService.cadastrar(vinho);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
-    public static boolean cadastrarCachaca(LojaService lojaService) throws Exception {
-        Scanner sc = new Scanner(System.in);
+    public static boolean cadastrarCachaca(LojaService lojaService) {
         System.out.println("Nome da cachaca:");
-        String nome = sc.nextLine();
+        String nome = Teclado.leString();
         System.out.println("Estilo:");
-        String estilo = sc.nextLine();
+        String estilo = Teclado.leString();
         System.out.println("Tipo de cana-de-acucar da cachaca:");
-        String cana = sc.nextLine();
+        String cana = Teclado.leString();
         System.out.println("Tipo de barril da cachaca:");
-        String barril = sc.nextLine();
+        String barril = Teclado.leString();
         System.out.println("Álcool (%):");
-        double alcool = Double.parseDouble(sc.nextLine());
-        sc.close();
+        double alcool = Teclado.leDouble();
 
         Cachaca cachaca = new Cachaca(nome, estilo, cana, barril, alcool);
-        return lojaService.cadastrar(cachaca);
+        try {
+            return lojaService.cadastrar(cachaca);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public static void imprimeOpcoes() {
